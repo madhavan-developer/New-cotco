@@ -1,5 +1,16 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+
+const menuLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Cotton", href: "/services" },
+  { label: "Fiber", href: "/contact" },
+  { label: "Products", href: "/" },
+  { label: "Resources", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,21 +23,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // Show/hide navbar
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-
-      // Toggle white background when scrolled
-      if (currentScrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
+      setShowNavbar(currentScrollY < lastScrollY || currentScrollY < 80);
+      setScrolled(currentScrollY > 10);
       setLastScrollY(currentScrollY);
     };
 
@@ -34,48 +32,82 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  const navClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+    showNavbar ? "translate-y-0" : "-translate-y-full"
+  } ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`;
+
+  const linkClass = `transition-colors duration-300 font-medium ${
+    scrolled ? "text-[#121E2B] hover:text-blue-600" : "text-white hover:text-blue-300"
+  }`;
+
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      } ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
-    >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center transition-colors duration-300">
-        {/* Logo */}
-        <div className="flex items-center gap-2 text-blue-700 font-bold text-xl">
-          <img src="/logo/logo.png" alt="Company Logo" className="h-14 w-auto" />
-        </div>
+    <>
+      <nav className={navClasses}>
+        <div className="mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center gap-2 font-bold text-xl text-blue-700">
+            <img src="/logo/logo.png" alt="Logo" className="h-14 w-auto" />
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 text-gray-800 font-medium">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/services">Cotton</a>
-          <a href="/contact">Fiber</a>
-          <a href="/">Products</a>
-          <a href="/about">Resources</a>
-          <a href="/contact">Contact</a>
-        </div>
+          {/* Desktop Links */}
+          <div className="hidden md:flex space-x-16">
+            {menuLinks.map(({ label, href }) => (
+              <a key={label} href={href} className={linkClass}>
+                {label}
+              </a>
+            ))}
+          </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden text-2xl text-gray-800 cursor-pointer" onClick={toggleMenu}>
-          {isOpen ? <FaTimes /> : <FaBars />}
+          {/* Mobile Toggle */}
+          <div
+            className={`md:hidden text-2xl cursor-pointer z-[60] ${
+              isOpen ? "text-white" : "text-gray-800"
+            }`}
+            onClick={toggleMenu}
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden px-6 pb-4 bg-white shadow-md rounded-b-lg space-y-3 text-gray-700 font-medium">
-          <a href="/" onClick={toggleMenu}>Home</a>
-          <a href="/about" onClick={toggleMenu}>About</a>
-          <a href="/services" onClick={toggleMenu}>Cotton</a>
-          <a href="/contact" onClick={toggleMenu}>Fiber</a>
-          <a href="/" onClick={toggleMenu}>Products</a>
-          <a href="/about" onClick={toggleMenu}>Resources</a>
-          <a href="/contact" onClick={toggleMenu}>Contact</a>
-        </div>
-      )}
-    </nav>
+      {/* Fullscreen Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed top-0 left-0 w-full h-full bg-[#0A1C2E] text-white z-50 flex flex-col items-center justify-center"
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: "0%" }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {/* Close Button Top Right */}
+            <button
+              className="absolute top-6 right-6 text-white text-3xl focus:outline-none"
+              onClick={toggleMenu}
+            >
+              <FaTimes />
+            </button>
+
+            {/* Menu Items */}
+            <div className="space-y-8 grid text-center">
+              {menuLinks.map(({ label, href }, index) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  onClick={toggleMenu}
+                  className="text-2xl font-semibold hover:text-blue-400"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                >
+                  {label}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

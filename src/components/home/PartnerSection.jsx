@@ -9,18 +9,23 @@ const partners = [
   { name: "LDC", image: "/img/partners/logo3.png" },
   { name: "LMW", image: "/img/partners/logo4.png" },
   { name: "Devcot", image: "/img/partners/logo5.png" },
+  // Optional: Duplicate to make the loop smoother
+  { name: "Aditya Birla Group", image: "/img/partners/logo1.png" },
+  { name: "Viterra", image: "/img/partners/logo2.png" },
 ];
 
 export default function PartnerSection() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 0, // key to smooth continuous scroll
+    cssEase: "linear", // smooth motion
     slidesToShow: 5,
     slidesToScroll: 1,
     arrows: false,
+    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 768, // mobile
@@ -32,7 +37,7 @@ export default function PartnerSection() {
   };
 
   return (
-    <section className="py-12 px-4 md:px-20 bg-whiterounded-md partner-section">
+    <section className="py-12 px-4 md:px-20 bg-white rounded-md partner-section">
       <h2 className="text-center text-xl md:text-2xl font-semibold mb-8">
         Proud partners with global leaders
       </h2>

@@ -1,68 +1,49 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import SlideButton from '../common/SlideButton';
-import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+import SlideButton from "../common/SlideButton";
 
 export default function HeroSection() {
   const [scrolled, setScrolled] = useState(false);
-  const [muted, setMuted] = useState(true);
   const videoRef = useRef(null);
-
-  const { scrollY } = useScroll();
-
-  // Scale & opacity for main section
-  const scale = useTransform(scrollY, [0, 200], [1, 0.95]);
-  const opacity = useTransform(scrollY, [0, 200], [1, 0.9]);
-  const smoothScale = useSpring(scale, { stiffness: 150, damping: 20 });
-  const smoothOpacity = useSpring(opacity, { stiffness: 150, damping: 20 });
-
-  // Parallax translate for text (moves up slightly on scroll)
-  const textTranslate = useTransform(scrollY, [0, 300], [0, -50]);
-  const textOpacity = useTransform(scrollY, [0, 150], [1, 0.7]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMute = () => {
-    setMuted(!muted);
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-    }
-  };
 
   return (
     <motion.div
-      style={{
-        scale: smoothScale,
-        opacity: smoothOpacity,
-      }}
-      className={`relative overflow-hidden min-h-screen transition-all duration-300 ${
-        scrolled ? 'rounded-2xl shadow-2xl' : ''
+      initial={{ scale: 1, opacity: 1 }}
+      animate={scrolled ? { scale: 0.95, opacity: 0.9 } : { scale: 1, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`relative overflow-hidden min-h-screen transition-all duration-500 ease-out ${
+        scrolled ? "rounded-2xl shadow-2xl" : ""
       }`}
     >
       {/* Background Video */}
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
-  playsInline
-            loop
-            autoPlay
-            muted
+        autoPlay
+        loop
+        muted
+        playsInline
         src="/video/hero.mp4"
       />
 
-      {/* Overlay and Content */}
-      <div className="absolute inset-0 bg-black/40" />
-      <motion.div
-        className="absolute inset-0 flex flex-col items-start justify-center px-12 text-white"
-        style={{ y: textTranslate, opacity: textOpacity }}
-      >
-        <h1 className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight">
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Text Content */}
+      <div className="absolute md:bottom-0 bottom-10 px-12 pb-20 text-white max-w-4xl">
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
           Your Trusted Partner in Quality Cotton, Fibers & Textile Machinery
         </h1>
         <p className="mt-4 text-lg">
@@ -75,18 +56,10 @@ export default function HeroSection() {
             hoverBgColor="#143A59"
             hoverTextColor="#fff"
           >
-            Golden Button
+           Explore Products
           </SlideButton>
         </div>
-      </motion.div>
-
-      {/* Mute Button */}
-      <button
-        onClick={toggleMute}
-        className="absolute top-4 right-4 bg-white/60 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition"
-      >
-        {muted ? <FaVolumeMute /> : <FaVolumeUp />}
-      </button>
+      </div>
     </motion.div>
   );
 }
