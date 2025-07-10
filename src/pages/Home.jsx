@@ -1,8 +1,13 @@
 import HeroSection from "../components/home/HeroSection";
-import ServicesSection from "../components/home/ServicesSection";
+import ProductShowcase from "../components/home/ProductShowcase";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
+import VisionMissionSection from "../components/home/VisionMissionSection ";
+import PartnerSection from "../components/home/PartnerSection";
+import CoreStrengthSection from "../components/home/CoreStrengthSection";
+import ContactToday from "../components/home/ContactToday";
+import NewsEventsSection from "../components/home/NewsLetter";
 
 const Home = () => {
   return (
@@ -10,8 +15,12 @@ const Home = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
-        <ServicesSection />
-        <TestimonialsSection />
+        <ProductShowcase />
+        <VisionMissionSection />
+        <PartnerSection />
+        <CoreStrengthSection />
+        <NewsEventsSection />
+        <ContactToday />
       </main>
       <Footer />
     </div>
