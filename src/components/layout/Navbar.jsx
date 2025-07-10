@@ -43,8 +43,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center transition-colors duration-300">
         {/* Logo */}
         <div className="flex items-center gap-2 text-blue-700 font-bold text-xl">
-          <img src="/logo/logo.png" alt="Company Logo" className="h-8 w-auto" />
-          <span>Cotco</span>
+          <img src="/logo/logo.png" alt="Company Logo" className="h-14 w-auto" />
         </div>
 
         {/* Desktop Menu */}
