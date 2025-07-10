@@ -74,7 +74,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed top-0 left-0 w-full h-full bg-[#0A1C2E] text-white z-50 flex flex-col items-center justify-center"
+            className="fixed top-0 left-0 w-full h-full bg-[#fff] text-[#0A1C2E] z-50 flex flex-col items-center justify-center"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: "0%" }}
             exit={{ opacity: 0, y: "-100%" }}
@@ -82,7 +82,7 @@ const Navbar = () => {
           >
             {/* Close Button Top Right */}
             <button
-              className="absolute top-6 right-6 text-white text-3xl focus:outline-none"
+              className="absolute top-6 right-6 text-[#0A1C2E] text-3xl focus:outline-none"
               onClick={toggleMenu}
             >
               <FaTimes />

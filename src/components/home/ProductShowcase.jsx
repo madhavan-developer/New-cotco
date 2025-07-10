@@ -51,7 +51,7 @@ export default function ProductShowcase() {
                 className="group relative rounded-2xl overflow-hidden w-full h-full"
               >
                 {/* Image Wrapper for Zoom */}
-                <div className="w-full h-full overflow-hidden rounded-lg">
+                <div className="w-full h-full overflow-hidden rounded-2xl">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -64,7 +64,7 @@ export default function ProductShowcase() {
                   <img
                     src={item.overlayImage}
                     alt=""
-                    className="absolute top-[-15px] left-0"
+                    className="absolute hidden md:flex top-[-15px] left-0"
                   />
                 )}
 

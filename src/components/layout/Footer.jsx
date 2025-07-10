@@ -59,9 +59,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Your Email Address"
-                className="flex-1 px-4 py-3 bg-transparent text-white border border-gray-400 rounded-l-md placeholder-gray-300 focus:outline-none"
+                className="flex-1 md:px-4 px-2 py-3 bg-transparent text-white border border-gray-400 rounded-l-md placeholder-gray-300 focus:outline-none"
               />
-              <button className="bg-white text-[#0A1C2E] px-6 py-3 rounded-r-md hover:bg-gray-100 font-medium flex items-center gap-2">
+              <button className="bg-white text-[#0A1C2E] md:px-6 px-3 py-3 rounded-r-md hover:bg-gray-100 font-medium flex items-center gap-2">
                 Get Started <span className="text-lg">→</span>
               </button>
             </div>
