@@ -39,7 +39,7 @@ export default function HeroSection() {
       />
 
       {/* Dark overlay */}
-      {/* <div className="absolute inset-0 bg-black/20" /> */}
+       <div className="absolute inset-0 bg-black/40" />
 
       {/* Text Content */}
       <div className="absolute md:bottom-0 bottom-10 px-12 pb-20 text-white max-w-4xl">
