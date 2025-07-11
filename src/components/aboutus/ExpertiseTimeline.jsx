@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, AnimatePresence } from "framer-motion";
 
 const expertiseData = [
   {
@@ -42,17 +42,21 @@ export default function PinnedExpertiseTimeline() {
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [prevIndex, setPrevIndex] = useState(0);
   const stepCount = expertiseData.length;
+
   const scrollSteps = useTransform(scrollYProgress, (progress) => {
     return Math.min(Math.floor(progress * stepCount), stepCount - 1);
   });
 
   useEffect(() => {
     return scrollSteps.on("change", (latest) => {
-      setCurrentIndex(latest);
+      if (latest !== currentIndex) {
+        setPrevIndex(currentIndex);    // keep old image for base
+        setCurrentIndex(latest);       // sync year + description
+      }
     });
-  }, [scrollSteps]);
+  }, [scrollSteps, currentIndex]);
 
   return (
     <section ref={sectionRef} className="relative h-[500vh] bg-[#E7EDF5]">
@@ -66,7 +70,11 @@ export default function PinnedExpertiseTimeline() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                transition={{
+                  delay: i * 0.1,
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
                 className="text-3xl font-semibold text-[#000]"
               >
                 {item.year}
@@ -78,61 +86,96 @@ export default function PinnedExpertiseTimeline() {
             key={currentIndex}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-lg text-black font-normal pt-6"
           >
             {expertiseData[currentIndex].description}
           </motion.p>
         </div>
 
-        {/* Right: Image */}
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative h-full w-full"
-        >
+        {/* Right: Static old image + new sliding image */}
+        <div className="relative h-full w-full overflow-hidden">
           <img
-            src={expertiseData[currentIndex].image}
-            alt={expertiseData[currentIndex].year}
-            className="absolute inset-0 right-0 w-full h-full object-cover shadow-lg"
-          />
-        </motion.div>
-      </div>
-
-      {/* Mobile Layout */}
-      <div className="md:hidden sticky top-0 h-screen w-full">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="relative h-full w-full"
-        >
-          {/* Background Image */}
-          <img
-            src={expertiseData[currentIndex].image}
-            alt={expertiseData[currentIndex].year}
+            src={expertiseData[prevIndex].image}
+            alt={expertiseData[prevIndex].year}
             className="absolute inset-0 w-full h-full object-cover z-0"
           />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/40 bg-opacity-40 z-10" />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={expertiseData[currentIndex].image}
+              src={expertiseData[currentIndex].image}
+              alt={expertiseData[currentIndex].year}
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover z-10"
+            />
+          </AnimatePresence>
+        </div>
+      </div>
 
-          {/* Text Content */}
-          <div className="absolute top-10 left-6 z-20">
-            <p className="text-white font-semibold text-sm uppercase mb-2">History</p>
-          </div>
-<div className="absolute top-10 right-6 z-20">
-            <p className="text-white font-bold text-2xl">{expertiseData[currentIndex].year}</p>
-          </div>
-          {/* Description */}
-          <div className="absolute bottom-10 left-6 right-6 z-20">
-            <p className="text-white text-sm leading-relaxed">
-              {expertiseData[currentIndex].description}
-            </p>
-          </div>
+      {/* Mobile Layout */}
+      <div className="md:hidden sticky top-0 h-screen w-full overflow-hidden">
+        <img
+          src={expertiseData[prevIndex].image}
+          alt={expertiseData[prevIndex].year}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={expertiseData[currentIndex].image}
+            src={expertiseData[currentIndex].image}
+            alt={expertiseData[currentIndex].year}
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover z-10"
+          />
+        </AnimatePresence>
+
+        {/* Overlay */}
+        <motion.div
+          key={`overlay-${currentIndex}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0 bg-black/40 z-20"
+        />
+
+        {/* Top Text Left */}
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="absolute top-10 left-6 z-30"
+        >
+          <p className="text-white font-semibold text-sm uppercase mb-2">History</p>
+        </motion.div>
+
+        {/* Top Text Right */}
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.35, duration: 0.5 }}
+          className="absolute top-10 right-6 z-30"
+        >
+          <p className="text-white font-bold text-2xl">{expertiseData[currentIndex].year}</p>
+        </motion.div>
+
+        {/* Description */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="absolute bottom-10 left-6 right-6 z-30"
+        >
+          <p className="text-white text-sm leading-relaxed">
+            {expertiseData[currentIndex].description}
+          </p>
         </motion.div>
       </div>
     </section>
