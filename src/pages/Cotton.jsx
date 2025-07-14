@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbar from "../components/layout/Navbar";
-import CottonSection from "../components/cotton/hero";
+import CottonHero from "../components/cotton/CottonHero";
 import Footer from "../components/layout/Footer";
 import SuppliersSection from "../components/cotton/SuppliersSection";
 import CottonTrustSection from "../components/cotton/CottonTrustSection";
@@ -10,7 +10,7 @@ const Cotton = () => {
   return (
     <div>
       <Navbar />
-      <CottonSection />
+      <CottonHero />
       <SuppliersSection />
       <CottonTrustSection />
       <CertificationSliderSection />

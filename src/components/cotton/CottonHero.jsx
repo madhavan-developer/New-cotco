@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-export default function CottonSection() {
+export default function CottonHero() {
   const [isMobile, setIsMobile] = useState(false);
   const controls = useAnimation();
   const shadowControls = useAnimation();
