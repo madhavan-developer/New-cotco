@@ -3,7 +3,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { FiUser } from "react-icons/fi";
 
 
-export default function ProductsHero() {
+export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const [bubbleRotation, setBubbleRotation] = useState("-16deg");
   const controls = useAnimation();
