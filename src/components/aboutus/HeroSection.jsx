@@ -28,7 +28,7 @@ const HeroSection = () => {
         scrolled ? "rounded-2xl" : ""
       }`}
     >
-      {/* Title Content */}
+     
       <motion.div
         style={{ y: yTitle }}
         className="absolute left-[5%] top-[18%] md:top-[18%] md:left-[35%] z-10 flex flex-col justify-center items-center text-center px-6 text-white"

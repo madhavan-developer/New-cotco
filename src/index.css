@@ -35,16 +35,8 @@ h1,h2,h3,h4,h5,h6 {
   font-style: normal;
 }
 
-h1 {
-  @apply text-4xl md:text-5xl leading-tight;
-}
-
 h2 {
   @apply text-3xl md:text-4xl leading-snug;
-}
-
-h3 {
-  @apply text-2xl md:text-3xl;
 }
 
 p {
@@ -53,4 +45,16 @@ p {
 
 a {
   @apply transition duration-200;
+}
+/* styles.css or global.css */
+.outlined-text {
+  color: transparent;
+  -webkit-text-stroke: 1px #0A4A78;
+  transition: all 0.3s ease-in-out;
+}
+
+.group:hover .outlined-text {
+   color: transparent;
+  -webkit-text-stroke: 1px #ffffff !important;
+  -webkit-text-stroke: 0;
 }

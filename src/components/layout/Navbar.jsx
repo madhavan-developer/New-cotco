@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom"; // ✅ Import for router
 
 const menuLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/aboutus" },
-  { label: "Cotton", href: "/services" },
-  { label: "Fiber", href: "/contact" },
-  { label: "Products", href: "/" },
+  { label: "Cotton", href: "/cotton" },
+  { label: "Fiber", href: "/fiber" },
+  { label: "Products", href: "/products" },
   { label: "Resources", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
+  const location = useLocation(); // ✅ Current URL path
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -32,19 +34,23 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const navClasses = `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+  const navClasses = `top-0 left-0 w-full z-50 transition-all duration-300 ${
     showNavbar ? "translate-y-0" : "-translate-y-full"
-  } ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`;
+  } ${scrolled ? "bg-white shadow-md fixed" : "bg-transparent relative"}`;
 
-  const linkClass = `transition-colors duration-300 font-medium ${
-    scrolled ? "text-[#121E2B] hover:text-blue-600" : "text-white hover:text-blue-300"
-  }`;
+  const getLinkClass = (href) =>
+    `transition-colors duration-300 font-medium ${
+      location.pathname === href
+        ? "text-blue-600 font-semibold" // ✅ Active color
+        : scrolled
+        ? "text-[#121E2B] hover:text-blue-600"
+        : "text-[#121E2B] hover:text-blue-300"
+    }`;
 
   return (
     <>
       <nav className={navClasses}>
-        <div className="mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-          {/* Logo */}
+        <div className="mx-auto px-6 md:px-20 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2 font-bold text-xl text-blue-700">
             <img src="/logo/logo.png" alt="Logo" className="h-14 w-auto" />
           </div>
@@ -52,9 +58,9 @@ const Navbar = () => {
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-16">
             {menuLinks.map(({ label, href }) => (
-              <a key={label} href={href} className={linkClass}>
+              <Link key={label} to={href} className={getLinkClass(href)}>
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -70,7 +76,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Fullscreen Mobile Menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -80,7 +86,6 @@ const Navbar = () => {
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {/* Close Button Top Right */}
             <button
               className="absolute top-6 right-6 text-[#0A1C2E] text-3xl focus:outline-none"
               onClick={toggleMenu}
@@ -88,20 +93,24 @@ const Navbar = () => {
               <FaTimes />
             </button>
 
-            {/* Menu Items */}
             <div className="space-y-8 grid text-center">
               {menuLinks.map(({ label, href }, index) => (
-                <motion.a
+                <motion.div
                   key={label}
-                  href={href}
-                  onClick={toggleMenu}
-                  className="text-2xl font-semibold hover:text-blue-400"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
                 >
-                  {label}
-                </motion.a>
+                  <Link
+                    to={href}
+                    onClick={toggleMenu}
+                    className={`text-2xl font-semibold ${
+                      location.pathname === href ? "text-blue-600" : "hover:text-blue-400"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>

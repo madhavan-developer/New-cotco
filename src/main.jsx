@@ -6,14 +6,18 @@ import './assets/css/main.css'
 import './assets/css/service.css'
 import Home from './pages/Home';
 import Aboutus from './pages/Aboutus';
-
+import Cotton from './pages/Cotton';
+import Fiber from './pages/Fiber';
+import Products from './pages/products';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<Aboutus />} />
-
+        <Route path="/cotton" element={<Cotton />} />
+        <Route path="/fiber" element={<Fiber />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
