@@ -64,7 +64,7 @@ export default function ProductShowcase() {
                   <img
                     src={item.overlayImage}
                     alt=""
-                    className="absolute hidden md:flex top-[-15px] left-0"
+                    className="absolute hidden md:flex top-[0px] left-0"
                   />
                 )}
 

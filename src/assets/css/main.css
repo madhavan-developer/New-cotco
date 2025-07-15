@@ -33,24 +33,50 @@
     padding: 40px 10px !important;
   }
 
+  .cotton-flower-image {
+    margin-top: -70px !important;
+    width: 100% !important;
+    height: 255px !important;
+    object-fit: cover !important;
+  }
+
   .newsLetter {
     padding: 40px 10px !important;
+  }
+
+  .suppliers-content {
+    padding-top: 0px !important;
+    margin-top: 10px !important;
   }
 
   .newsLetter br {
     display: none !important;
   }
 
+  .suppliers-logo {
+    background-color: #fff !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+  }
+
   .newsLetterH2 {
     margin-bottom: 20px !important;
   }
 
+  .certification-slider-controls {
+    margin-top: 450px !important;
+  }
+
   .newsLetterMainH2 {
-    font-size: 18px !important;
+    font-size: 16px !important;
   }
 
   .newsLetterGrid {
     gap: 120px !important;
+  }
+
+  .products-description{
+    padding-right: 0px !important;
   }
 
   .newsScroll {
@@ -72,11 +98,11 @@
     padding: 0 !important;
   }
 
-  .vision-mission-section{
+  .vision-mission-section {
     padding: 40px 00px !important;
   }
 
-  .partner-section{
+  .partner-section {
     padding: 40px 20px !important;
   }
 
@@ -86,12 +112,12 @@
     padding-right: 0 !important;
   }
 
-  .product-showcase-cards{
+  .product-showcase-cards {
     flex-direction: column !important;
     align-items: center !important;
   }
 
-  .product-showcase{
+  .product-showcase {
     padding: 40px 20px !important;
   }
 
@@ -100,5 +126,11 @@
     margin-top: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .cotton-flower-image {
+    margin-top: -180px !important;
   }
 }

@@ -3,6 +3,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 
 export default function CottonHero() {
   const [isMobile, setIsMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const controls = useAnimation();
   const shadowControls = useAnimation();
   const textControls = useAnimation();
@@ -13,7 +14,20 @@ export default function CottonHero() {
     const checkIfMobile = () => setIsMobile(window.innerWidth < 768);
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
-    return () => window.removeEventListener('resize', checkIfMobile);
+    
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -86,92 +100,101 @@ export default function CottonHero() {
   };
 
   return (
-    <section className="relative bg-white px-6 md:p-20  md:pt-0 overflow-hidden">
-      {/* Top Hero Video */}
-      <motion.div 
-        className="w-full flex justify-center relative z-10"
-        initial="hidden"
-        animate="visible"
-        variants={heroVariants}
+    <section className="relative bg-white overflow-hidden">
+      {/* Video Section with Scroll Effect */}
+      <motion.div
+        initial={{ scale: 1, opacity: 1 }}
+        animate={scrolled ? { scale: 0.9, opacity: 0.9 } : { scale: 1, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`relative z-10 transition-all duration-500 ease-out ${
+          scrolled ? "rounded-2xl shadow-2xl" : ""
+        }`}
       >
-        {/* Desktop Video */}
-        <motion.video
-          autoPlay
-          muted
-          loop
-          playsInline
-          src="/video/cotton.mp4"
-          className="w-full rounded-xl mt-6 hidden md:block"
-          whileHover={{ scale: 1.01 }}
-          transition={{ duration: 0.3 }}
-        />
-        {/* Mobile Video */}
-       <div className="relative w-full h-screen block md:hidden">
-  <motion.video
-    autoPlay
-    muted
-    loop
-    playsInline
-    src="/video/cotton-mobile.mp4"
-    className="absolute top-0 left-0 w-screen h-screen object-cover rounded-xl"
-    whileHover={{ scale: 1.01 }}
-    transition={{ duration: 0.3 }}
-  />
-</div>
-
-
-        {/* Left Static Cotton Bubble */}
-        <motion.img
-          src="/img/cotton/cotton.png"
-          alt=""
-          className="absolute left-[-16%] top-[25%] -translate-y-1/2 w-60 hidden md:block"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
-          whileHover={{ scale: 1.1, rotate: 5 }}
-        />
-
-        {/* Right Animated Cotton Bubble with Shadow */}
-        <motion.div
-          initial={{ position: "absolute", right: "-200px", top: "70%" }}
-          animate={controls}
-          className="hidden md:block"
-          style={{ position: "absolute" }}
-          whileHover={{ scale: 1.05 }}
+        {/* Top Hero Video */}
+        <motion.div 
+          className="w-full flex justify-center"
+          initial="hidden"
+          animate="visible"
+          variants={heroVariants}
         >
-          <img
-            src="/img/cotton/cotton.png"
-            alt="Cotton Ball"
-            className="rounded-xl w-full"
+          {/* Desktop Video */}
+          <motion.video
+            autoPlay
+            muted
+            loop
+            playsInline
+            src="/video/cotton.mp4"
+            className={`w-full hidden md:block ${scrolled ? "rounded-3xl " : "rounded-none"}`}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
           />
-          <motion.div
-            animate={shadowControls}
-            className="w-full h-6 bg-black rounded-full mx-auto mt-[-12px] blur-md"
-          />
-        </motion.div>
+          {/* Mobile Video */}
+          <div className="relative w-full h-screen block md:hidden">
+            <motion.video
+              autoPlay
+              muted
+              loop
+              playsInline
+              src="/video/cotton-mobile.mp4"
+              className={`absolute top-0 left-0 w-screen h-screen object-cover  ${scrolled ? "rounded-xl " : "rounded-none"}`}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
 
-        {/* Mobile-only Animated Cotton Bubble */}
-        <motion.div
-          initial={{ position: "absolute", right: "-200px", top: "70%" }}
-          animate={controls}
-          className="block md:hidden"
-          style={{ position: "absolute" }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <img
+          {/* Left Static Cotton Bubble */}
+          <motion.img
             src="/img/cotton/cotton.png"
-            alt="Cotton Ball"
-            className="rounded-xl w-full"
+            alt=""
+            className="absolute left-[-11%] top-[25%] -translate-y-1/2 w-60 hidden md:block"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
           />
+
+          {/* Right Animated Cotton Bubble with Shadow */}
           <motion.div
-            animate={shadowControls}
-            className="w-full h-6 bg-black rounded-full mx-auto mt-[-12px] blur-md"
-          />
+            initial={{ position: "absolute", right: "-200px", top: "70%" }}
+            animate={controls}
+            className="hidden md:block"
+            style={{ position: "absolute" }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img
+              src="/img/cotton/cotton.png"
+              alt="Cotton Ball"
+              className="rounded-xl w-full"
+            />
+            <motion.div
+              animate={shadowControls}
+              className="w-full h-6 bg-black rounded-full mx-auto mt-[-12px] blur-md"
+            />
+          </motion.div>
+
+          {/* Mobile-only Animated Cotton Bubble */}
+          <motion.div
+            initial={{ position: "absolute", right: "-200px", top: "70%" }}
+            animate={controls}
+            className="block md:hidden"
+            style={{ position: "absolute" }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img
+              src="/img/cotton/cotton.png"
+              alt="Cotton Ball"
+              className="rounded-xl w-full"
+            />
+            <motion.div
+              animate={shadowControls}
+              className="w-full h-6 bg-black rounded-full mx-auto mt-[-12px] blur-md"
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* Text + Image Target Section */}
-      <div className="mt-16">
+      {/* Text + Image Target Section (unaffected by scroll) */}
+      <div className="mt-6 md:p-20 p-6">
         <motion.h1 
           className="text-2xl text-center md:text-3xl font-semibold mb-4 text-[#1C1C1C]"
           initial="hidden"

@@ -86,55 +86,51 @@ export default function NewsEventsSection() {
 
         <div className="grid md:grid-cols-2 gap-8 items-start newsLetterGrid">
           {/* Left Side Slider */}
-          <div className="relative rounded-xl shadow-lg h-[400px] md:h-[540px]">
-            <AnimatePresence custom={direction} mode="wait">
-              <motion.img
-                key={"img-" + currentSlide}
-                src={leftSlides[currentSlide].image}
-                alt="Slide"
-                variants={slideVariants}
-                custom={direction}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.5 }}
-                className="w-full h-[400px] md:h-[540px] object-cover top-0 left-0 rounded-tr-4xl rounded-tl-4xl rounded-br-4xl rounded-bl-4xl"
-              />
-            </AnimatePresence>
+<div className="relative h-[400px] md:h-[540px]">
+  <AnimatePresence custom={direction} mode="wait">
+    <motion.div
+      key={"slide-" + currentSlide}
+      variants={slideVariants}
+      custom={direction}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{ duration: 0.5 }}
+      className="relative rounded-xl shadow-lg w-full h-full overflow-hidden"
+    >
+      {/* Slide Image */}
+      <img
+        src={leftSlides[currentSlide].image}
+        alt="Slide"
+        className="w-full h-full object-cover rounded-tr-4xl rounded-tl-4xl rounded-br-4xl rounded-bl-4xl"
+      />
 
-            <div className="absolute bottom-0 left-0 right-0 rounded-br-4xl rounded-bl-4xl bg-gradient-to-t from-black/100 to-transparent p-6 z-10 overflow-hidden h-[160px]">
-              <AnimatePresence custom={direction} mode="wait">
-                <motion.p
-                  key={"text-" + currentSlide}
-                  variants={slideVariants}
-                  custom={direction}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-semibold newsLetterMainH2"
-                >
-                  {leftSlides[currentSlide].title}
-                </motion.p>
-              </AnimatePresence>
-            </div>
+      {/* Gradient Overlay + Text */}
+      <div className="absolute bottom-0 left-0 right-0 rounded-br-4xl rounded-bl-4xl bg-gradient-to-t from-black/100 to-transparent p-6 z-10 h-[160px]">
+        <p className="text-2xl font-semibold newsLetterMainH2">
+          {leftSlides[currentSlide].title}
+        </p>
+      </div>
+    </motion.div>
+  </AnimatePresence>
 
-            {/* Slider Controls */}
-            <div className="absolute -bottom-20 left-4 flex gap-8 z-20">
-              <button
-                onClick={prevSlide}
-                className="p-5 hover:cursor-pointer border rounded-full hover:bg-white hover:text-blue-900 transition"
-              >
-                <FaArrowLeft className="text-lg" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-5 hover:cursor-pointer border rounded-full hover:bg-white hover:text-blue-900 transition"
-              >
-                <FaArrowRightLong className="text-lg" />
-              </button>
-            </div>
-          </div>
+  {/* Slider Controls (Not animated) */}
+  <div className="absolute -bottom-20 left-4 flex gap-8 z-20">
+    <button
+      onClick={prevSlide}
+      className="p-5 hover:cursor-pointer border rounded-full hover:bg-white hover:text-blue-900 transition"
+    >
+      <FaArrowLeft className="text-lg" />
+    </button>
+    <button
+      onClick={nextSlide}
+      className="p-5 hover:cursor-pointer border rounded-full hover:bg-white hover:text-blue-900 transition"
+    >
+      <FaArrowRightLong className="text-lg" />
+    </button>
+  </div>
+</div>
+
 
           {/* Right Side Scrollable News */}
           <div className="news-scroll overflow-x-auto max-w-full scroll-smooth scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500">

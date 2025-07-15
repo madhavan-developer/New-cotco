@@ -19,17 +19,17 @@ export default function CottonTrustSection() {
             <img
               src="/img/cotton/trust/ncc.png"
               alt="National Cotton Council"
-              className="w-24 h-24 object-contain border p-2 rounded"
+              className="w-24 h-24 object-contain border-2 border-[#74AFDF66] p-2 rounded-md"
             />
             <img
               src="/img/cotton/trust/africa.png"
               alt="Cotton Made in Africa"
-              className="w-24 h-24 object-contain bg-[#8A1E2D] rounded p-2"
+              className="w-24 h-24 object-contain border-2 border-[#74AFDF66] bg-[#8A1E2D] rounded-md p-2"
             />
             <img
               src="/img/cotton/trust/afcot.png"
               alt="AFCOT"
-              className="w-24 h-24 object-contain border p-2 rounded"
+              className="w-24 h-24 object-contain border-2 border-[#74AFDF66] p-2 rounded-md"
             />
           </div>
         </div>

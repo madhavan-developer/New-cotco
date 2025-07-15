@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
+import SlideIn from "../common/SlideIn";
 
 const machines = [
   {
@@ -37,11 +38,12 @@ export default function LmwMachines() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {machines.map((machine, index) => (
-          <div key={index} className="rounded-xl bg-white">
-            <img
-              src={machine.image}
-              alt={machine.name}
-              className="w-full h-80 mb-4 rounded-xl object-cover"
+            <SlideIn direction="right">
+              <div key={index} className="rounded-xl bg-white">
+                <img
+                  src={machine.image}
+                  alt={machine.name}
+                  className="w-full h-80 mb-4 rounded-xl object-cover"
             />
             <div className="bg-[#0D3B66] text-white rounded-xl p-4 flex justify-between items-center">
               <span className="font-semibold">{machine.name.toUpperCase()}</span>
@@ -50,6 +52,7 @@ export default function LmwMachines() {
               </button>
             </div>
           </div>
+          </SlideIn>
         ))}
       </div>
     </section>

@@ -19,32 +19,68 @@ const suppliers = [
   {
     name: "Viterra",
     logo: "/img/cotton/suppliers/viterra_logo.png",
-    background: "/img/home/cotton2.png",
-    content: ["Global network in agricultural supply chains", "Efficient procurement & delivery", "Trusted cotton exporter"],
+    background: "/img/cotton/suppliers/viterra-bg.png",
+    content: [
+      "Founded: 2016 (from Glencore Agriculture), Netherlands",
+      "Operations: Over 37 countries",
+      "Leading cotton trading group with a large market share in Asia, Europe, and North America",
+      "Strong sourcing from the USA, Australia, and West Africa",
+      "Integrated supply chain: warehousing, processing, modern transportation",
+      "Solid finances ensuring stable supply and large delivery capacity",
+      "BCI member, committed to environmental protection and community investment",
+    ],
   },
   {
     name: "ECOM",
     logo: "/img/cotton/suppliers/ecom_logo.png",
-    background: "/img/home/cottonmac.png",
-    content: ["Established in 1849", "Sustainable practices in cotton trading", "Active across Latin America and Africa"],
+    background: "/img/cotton/suppliers/ecom-bg.jpg",
+    content: [
+      "Founded: 1849, Switzerland",
+      "Founded: 1849, Switzerland",
+      "One of the oldest and most reputable companies in the international cotton industry",
+      "Procures and distributes a large volume of diverse cotton from the USA, Brazil, India, and Africa",
+      "Strict quality control, serving many leading global textile groups",
+      "BCI member, reducing environmental impact and supporting farming communities",
+    ],
   },
   {
     name: "REINHART",
     logo: "/img/cotton/suppliers/reinhart_logo.jpg",
-    background: "/img/home/upperFooter.jpg",
-    content: ["Swiss-based cotton trading group", "Trusted since 1788", "Focus on traceability & transparency"],
+    background: "/img/cotton/suppliers/paul-bg.jpg",
+    content: [
+      "Founded: 1788, Switzerland",
+      "Over 230 years of experience as one of the world’s largest and oldest cotton suppliers",
+      "Stable supply from the USA, West Africa, Brazil, and India",
+      "Extensive logistics network, rigorous quality control",
+      "Highly regarded by partners for reputation, quality, and timely delivery",
+      "BCI member, focused on sustainable development and efficient resource use",
+    ],
   },
   {
     name: "DEVCOT",
     logo: "/img/cotton/suppliers/devcot_logo.png",
-    background: "/img/home/cotton2.png",
-    content: ["Specialists in African cotton", "Reliable sourcing & delivery", "Modern logistics support"],
+    background: "/img/cotton/suppliers/devcot-bg.jpg",
+    content: [
+      "Headquarters: Le Havre, France",
+      "One of Europe’s leading cotton trading companies",
+      "Strong sourcing from the USA, Brazil, West Africa, and India",
+      "Clients include high-end textile manufacturers in France, Germany, Italy, and Spain",
+      "Strategic location in Le Havre port, optimizing delivery costs and time",
+      "BCI member, committed to a green supply chain and supporting agricultural communities",
+    ],
   },
   {
     name: "CAM NEGOCE",
     logo: "/img/cotton/suppliers/cam_logo.png",
-    background: "/img/home/cotton3.png",
-    content: ["Trusted cotton merchants", "Serving clients since 1952", "Reliable logistics & trade expertise"],
+    background: "/img/cotton/suppliers/cam-bg.png",
+    content: [
+      "Headquarters: France",
+      "A reputable cotton trading company in Europe",
+      "Main sourcing from the USA, Brazil, and West Africa",
+      "Clients: textile manufacturers in France, Spain, Portugal, Morocco, Tunisia",
+      "Wide procurement network, professional logistics and documentation services",
+      "BCI member, committed to sustainable development and supporting farming communities",
+    ],
   },
 ];
 
@@ -83,7 +119,7 @@ export default function SuppliersSection() {
   }, [scrollingLocked]);
 
   return (
-    <section ref={sectionRef} className="relative h-[300vh]">
+    <section ref={sectionRef} className="relative h-[300vh] ">
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Backgrounds */}
         {suppliers.map((supplier, i) => (
@@ -96,23 +132,33 @@ export default function SuppliersSection() {
           />
         ))}
 
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-xs z-0" />
+        <div className="absolute inset-0 bg-black/60 z-0" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col md:flex-row justify-center md:justify-between items-start md:items-center px-6 md:px-20 gap-6 md:gap-0">
+        <div
+          style={{ alignItems: "flex-start" }}
+          className="relative z-10 h-full p-6 flex flex-col md:flex-row justify-center md:justify-between items-start md:items-center px-6 md:px-20 gap-6 md:gap-0"
+        >
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 40 }}
+            style={{ paddingTop: "100px" }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl mt-28 md:mt-0"
+            className="max-w-2xl mt-28 md:mt-0 suppliers-content"
           >
-            <h2 className="text-3xl font-semibold mb-12 text-white">Suppliers</h2>
+            <h2 className="text-3xl font-semibold mb-12 text-white">
+              Suppliers
+            </h2>
 
             <div className="bg-white text-black rounded-full inline-block px-5 py-2 mb-4 font-medium shadow-lg">
               {suppliers[index].name}
             </div>
-            <img src={suppliers[index].logo} alt="Logo" className="w-40 h-auto mb-6 md:hidden " />
+            <img
+              src={suppliers[index].logo}
+              alt="Logo"
+              className="w-40 h-auto mb-6 md:hidden suppliers-logo"
+            />
             <hr className="border-white w-4/6 my-4 border-1" />
             <ul className="space-y-2 pt-4 text-white/90 leading-relaxed text-base md:text-lg">
               {suppliers[index].content.map((line, idx) => (
@@ -122,17 +168,23 @@ export default function SuppliersSection() {
           </motion.div>
 
           {/* Logo List */}
-          <div className="hidden md:flex flex-col gap-4 items-end p-6 bg-white/30 rounded-lg shadow-lg backdrop-blur-md">
+          <div className="hidden my-auto md:flex flex-col gap-4 items-end p-6 bg-white/30 rounded-lg shadow-lg backdrop-blur-md">
             {suppliers.map((supplier, i) => (
               <div
                 key={supplier.name}
                 onClick={() => setIndex(i)}
                 className={clsx(
                   "p-2 bg-white rounded-md w-40 shadow-md cursor-pointer transition-all duration-300",
-                  i === index ? "scale-105 ring-2 ring-blue-500" : "opacity-70 hover:opacity-100"
+                  i === index
+                    ? "scale-105 ring-2 ring-blue-500"
+                    : "opacity-70 hover:opacity-100"
                 )}
               >
-                <img src={supplier.logo} alt={supplier.name} className="w-full h-auto object-contain" />
+                <img
+                  src={supplier.logo}
+                  alt={supplier.name}
+                  className="w-full h-16 object-contain"
+                />
               </div>
             ))}
           </div>

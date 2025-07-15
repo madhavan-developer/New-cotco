@@ -75,7 +75,7 @@ export default function PinnedExpertiseTimeline() {
                   duration: 0.4,
                   ease: "easeOut",
                 }}
-                className="text-3xl font-semibold text-[#000]"
+                className="text-3xl text-end font-semibold text-[#000]"
               >
                 {item.year}
               </motion.div>
@@ -87,7 +87,7 @@ export default function PinnedExpertiseTimeline() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-lg text-black font-normal pt-6"
+            className="text-lg text-end text-black font-normal pt-6"
           >
             {expertiseData[currentIndex].description}
           </motion.p>
@@ -151,7 +151,7 @@ export default function PinnedExpertiseTimeline() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="absolute top-10 left-6 z-30"
+          className="absolute top-10 right-6 z-30"
         >
           <p className="text-white font-semibold text-sm uppercase mb-2">History</p>
         </motion.div>
@@ -171,7 +171,7 @@ export default function PinnedExpertiseTimeline() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="absolute bottom-10 left-6 right-6 z-30"
+          className="absolute bottom-10  right-6 z-30"
         >
           <p className="text-white text-sm leading-relaxed">
             {expertiseData[currentIndex].description}

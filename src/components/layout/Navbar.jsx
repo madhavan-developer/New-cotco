@@ -3,6 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom"; // ✅ Import for router
 
+
 const menuLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/aboutus" },
@@ -36,15 +37,15 @@ const Navbar = () => {
 
   const navClasses = `top-0 left-0 w-full z-50 transition-all duration-300 ${
     showNavbar ? "translate-y-0" : "-translate-y-full"
-  } ${scrolled ? "bg-white shadow-md fixed" : "bg-transparent relative"}`;
+  } ${scrolled ? "bg-white shadow-md fixed" : "bg-transparent fixed"}`;
 
   const getLinkClass = (href) =>
     `transition-colors duration-300 font-medium ${
       location.pathname === href
-        ? "text-blue-600 font-semibold" // ✅ Active color
+        ? "text-[#0D3B66] font-semibold" // ✅ Active color
         : scrolled
-        ? "text-[#121E2B] hover:text-blue-600"
-        : "text-[#121E2B] hover:text-blue-300"
+        ? "text-[#121E2B] hover:text-[#121E2B]"
+        : "text-[#fff] hover:text-[#fff]"
     }`;
 
   return (
@@ -52,7 +53,7 @@ const Navbar = () => {
       <nav className={navClasses}>
         <div className="mx-auto px-6 md:px-20 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2 font-bold text-xl text-blue-700">
-            <img src="/logo/logo.png" alt="Logo" className="h-14 w-auto" />
+           <Link to="/"><img src="/logo/logo.png" alt="Logo" className="h-14 w-auto" /></Link>
           </div>
 
           {/* Desktop Links */}

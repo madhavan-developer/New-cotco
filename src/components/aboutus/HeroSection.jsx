@@ -31,7 +31,7 @@ const HeroSection = () => {
      
       <motion.div
         style={{ y: yTitle }}
-        className="absolute left-[5%] top-[18%] md:top-[18%] md:left-[35%] z-10 flex flex-col justify-center items-center text-center px-6 text-white"
+        className="absolute top-[18%] md:top-[18%] w-full z-10 flex flex-col justify-center items-center text-center px-6 text-white"
       >
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -47,12 +47,12 @@ const HeroSection = () => {
           }}
           className="max-w-4xl"
         >
-          <h2 className="text-4xl text-[#298bcb] md:text-6xl font-light tracking-wider uppercase mb-2">
+          <h3 className="text-3xl text-[#298bcb] md:text-5xl font-light tracking-wider uppercase mb-2">
             GROW IN TRUST,
-          </h2>
-          <h2 className="text-4xl text-[#298bcb] md:text-6xl font-semibold tracking-wider uppercase">
+          </h3>
+          <h3 className="text-4xl text-[#298bcb] md:text-6xl font-semibold tracking-wider uppercase">
             QUALITY AND SERVICE
-          </h2>
+          </h3>
         </motion.div>
       </motion.div>
 

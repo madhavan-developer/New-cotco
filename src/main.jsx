@@ -9,9 +9,12 @@ import Aboutus from './pages/Aboutus';
 import Cotton from './pages/Cotton';
 import Fiber from './pages/Fiber';
 import Products from './pages/products';
+import ScrollToTop from './ScrollToTop';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<Aboutus />} />

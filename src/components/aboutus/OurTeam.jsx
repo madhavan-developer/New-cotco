@@ -19,27 +19,47 @@ const teamMembers = [
   {
     name: "LISA",
     title: "TRADER / PROJECT MANAGER",
-    image: "/img/services/team3.png",
+    image: "/img/team/lisa.png",
   },
   {
     name: "MARIA",
     title: "YARN MANAGER",
-    image: "/img/services/team4.png",
+    image: "/img/team/maria.png",
   },
   {
-    name: "MARIA",
-    title: "YARN MANAGER",
-    image: "/img/services/team4.png",
+    name: "Memole",
+    title: "TRADER",
+    image: "/img/team/memole.png",
   },
   {
-    name: "MARIA",
-    title: "YARN MANAGER",
-    image: "/img/services/team4.png",
+    name: "Tracy",
+    title: "TRADER",
+    image: "/img/team/tracy.png",
   },
   {
-    name: "MARIA",
-    title: "YARN MANAGER",
-    image: "/img/services/team4.png",
+    name: "Eric",
+    title: "LOGISTIC EXECUTIVE",
+    image: "/img/team/eric.png",
+  },
+    {
+    name: "giao",
+    title: "EXECUTIVE",
+    image: "/img/team/giao.png",
+  },
+  {
+    name: "quan",
+    title: "EXECUTIVE",
+    image: "/img/team/quan.png",
+  },
+  {
+    name: "mei",
+    title: "MARKETING DESIGNER",
+    image: "/img/team/mei.png",
+  },
+  {
+    name: "Tien le",
+    title: "TECHNICIAN",
+    image: "/img/team/tien-le.png",
   },
 ];
 
@@ -93,8 +113,8 @@ export default function OurTeam() {
                   />
                 </div>
                 <div className="py-4 px-3">
-                  <h3 className="font-bold text-sm">{member.name}</h3>
-                  <p className="text-gray-600 text-sm mt-2">{member.title}</p>
+                  <h3 className="font-bold text-sm uppercase">{member.name}</h3>
+                  <p className="text-gray-600 text-sm mt-2 uppercase">{member.title}</p>
                 </div>
               </div>
             </SwiperSlide>
