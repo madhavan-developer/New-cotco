@@ -54,7 +54,7 @@ const Footer = () => {
 
         {/* Newsletter Form: Right Bottom Corner */}
         <div className="flex justify-end mt-12">
-          <div className="w-full md:w-[500px]">
+          <div className="w-full md:w-[540px]">
             <div className="flex">
               <input
                 type="email"

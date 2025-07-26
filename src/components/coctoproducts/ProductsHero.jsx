@@ -122,14 +122,19 @@ export default function ProductsHero() {
           animate="visible"
           variants={heroVariants}
         >
+        <div className="absolute z-10 bottom-[190px] left-15">
           <motion.h1
-            className="absolute z-11 bottom-10 left-8 text-center text-xl md:text-4xl font-semibold text-[#fff] mb-4 md:mb-6"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-9xl text-white font-bold cotton-section-heading"
           >
-            High-Quality Fiber Solutions for the Spinning Industry
+            MACHINES
           </motion.h1>
+          <p className="text-white text-xl pl-6.5 pt-3 cotton-section-subheading">
+            Empowering Vietnam’s Textile Industry Since 2016
+          </p>
+        </div>
           
           {/* Desktop Video */}
           <motion.video
@@ -191,7 +196,7 @@ export default function ProductsHero() {
           className="order-2 md:order-1"
         >
           <motion.p
-            className="text-[#4B4B4B] mb-6 pr-30 md:pr-0 products-description"
+            className="text-[#4B4B4B] mb-6 pr-30 md:pb-20 pb-3 md:pr-0 products-description"
             variants={paragraphVariants}
           >
             With an agreement signed in 2022, COTCO became the official agent of

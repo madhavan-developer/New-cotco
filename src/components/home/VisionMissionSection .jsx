@@ -6,9 +6,9 @@ const VisionMissionSection = () => {
     <section className="py-16 bg-white vision-mission-section">
       <div className="md:grid flex flex-col-reverse grid-cols-1 md:grid-cols-2 items-center">
         {/* Left Text Content */}
-        <div className="text-white w-full flex-1 z-10 opacity-90 bg-[#0D3B66] p-10 md:p-20 pr-10 md:pr-30 vision-mission">
+        <div className="text-white w-full flex-1 z-10 opacity-90 bg-[#143A59] p-10 md:p-20 pr-10 md:pr-30 vision-mission">
        <SlideIn  direction="left" >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Vision & Mission</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">VISSION & MISSION</h2>
           <p className="mb-4">
             Make an impression with non-stop business, increase customer satisfaction,
             and aim first through professional sales and logistics products and services.

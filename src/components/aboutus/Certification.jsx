@@ -13,8 +13,8 @@ export default function Certification() {
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-medium">
-            Strategic alliances and certifications
+          <h2 className="text-2xl md:text-3xl font-semibold">
+            STRATEGIC ALLIANCES
           </h2>
         </div>
 

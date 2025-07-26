@@ -78,7 +78,7 @@ export default function OurTeam() {
             </p>
           </div>
 
-          <h2 className="text-7xl font-bold mb-4">Meet Our Team</h2>
+          <h2 className="text-7xl font-bold mb-4">MEET OUR TEAM</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
             Our experienced professionals combine deep textile industry
             knowledge with international trade expertise, ensuring seamless
@@ -113,8 +113,8 @@ export default function OurTeam() {
                   />
                 </div>
                 <div className="py-4 px-3">
-                  <h3 className="font-bold text-sm uppercase">{member.name}</h3>
-                  <p className="text-gray-600 text-sm mt-2 uppercase">{member.title}</p>
+                  <h3 className="font-semibold text-xl uppercase">{member.name}</h3>
+                  <p className="text-gray-600 text-md mt-2 uppercase">{member.title}</p>
                 </div>
               </div>
             </SwiperSlide>

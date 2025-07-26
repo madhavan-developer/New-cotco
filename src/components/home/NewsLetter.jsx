@@ -77,7 +77,7 @@ export default function NewsEventsSection() {
       className="text-white py-30 px-4 md:px-16 newsLetter"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-semibold text-center mb-2">News & Events</h2>
+        <h2 className="text-4xl font-semibold text-center mb-2">NEWS & EVENTS</h2>
         <p className="text-center text-gray-300 mb-20 newsLetterH2">
           Conveniently located and surrounded by natural beauty, it's
           <br />

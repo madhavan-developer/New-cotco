@@ -13,8 +13,8 @@ export default function CottonHero() {
   useEffect(() => {
     const checkIfMobile = () => setIsMobile(window.innerWidth < 768);
     checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-    
+    window.addEventListener("resize", checkIfMobile);
+
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
@@ -23,9 +23,9 @@ export default function CottonHero() {
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("resize", checkIfMobile);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -71,14 +71,14 @@ export default function CottonHero() {
         staggerChildren: 0.05,
         delayChildren: 0.3,
         duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const paragraphVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   const heroVariants = {
@@ -86,8 +86,8 @@ export default function CottonHero() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
-    }
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   const titleVariants = {
@@ -95,8 +95,8 @@ export default function CottonHero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 }
-    }
+      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+    },
   };
 
   return (
@@ -104,19 +104,29 @@ export default function CottonHero() {
       {/* Video Section with Scroll Effect */}
       <motion.div
         initial={{ scale: 1, opacity: 1 }}
-        animate={scrolled ? { scale: 0.9, opacity: 0.9 } : { scale: 1, opacity: 1 }}
+        animate={
+          scrolled ? { scale: 0.9, opacity: 0.9 } : { scale: 1, opacity: 1 }
+        }
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`relative z-10 transition-all duration-500 ease-out ${
           scrolled ? "rounded-2xl shadow-2xl" : ""
         }`}
       >
         {/* Top Hero Video */}
-        <motion.div 
+        <motion.div
           className="w-full flex justify-center"
           initial="hidden"
           animate="visible"
           variants={heroVariants}
         >
+          <div className="absolute z-10 bottom-[190px] left-15">
+            <h1 className="text-9xl text-white font-bold cotton-section-heading">
+              COTTON
+            </h1>
+            <p className="text-white text-xl pl-6.5 pt-3 cotton-section-subheading">
+              Empowering Vietnam’s Textile Industry Since 2016
+            </p>
+          </div>
           {/* Desktop Video */}
           <motion.video
             autoPlay
@@ -124,7 +134,9 @@ export default function CottonHero() {
             loop
             playsInline
             src="/video/cotton.mp4"
-            className={`w-full hidden md:block ${scrolled ? "rounded-3xl " : "rounded-none"}`}
+            className={`w-full hidden md:block ${
+              scrolled ? "rounded-3xl " : "rounded-none"
+            }`}
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.3 }}
           />
@@ -136,7 +148,9 @@ export default function CottonHero() {
               loop
               playsInline
               src="/video/cotton-mobile.mp4"
-              className={`absolute top-0 left-0 w-screen h-screen object-cover  ${scrolled ? "rounded-xl " : "rounded-none"}`}
+              className={`absolute top-0 left-0 w-screen h-screen object-cover  ${
+                scrolled ? "rounded-xl " : "rounded-none"
+              }`}
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             />
@@ -195,7 +209,7 @@ export default function CottonHero() {
 
       {/* Text + Image Target Section (unaffected by scroll) */}
       <div className="mt-6 md:p-20 p-6">
-        <motion.h1 
+        <motion.h1
           className="text-2xl text-center md:text-3xl font-semibold mb-4 text-[#1C1C1C]"
           initial="hidden"
           animate="visible"
@@ -203,7 +217,7 @@ export default function CottonHero() {
         >
           COTTON
         </motion.h1>
-        
+
         <div
           ref={ref}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto px-4 mt-10 items-center"
@@ -213,15 +227,15 @@ export default function CottonHero() {
             animate={textControls}
             variants={textVariants}
           >
-            <motion.p 
+            <motion.p
               className="text-[#4B4B4B] mb-6 pr-30 md:pr-0"
               variants={paragraphVariants}
             >
               COTCO is a partner supplying sustainable natural raw cotton from
-              major cotton-growing regions such as the USA, Australia, and Brazil,
-              while supporting mills across Vietnam.
+              major cotton-growing regions such as the USA, Australia, and
+              Brazil, while supporting mills across Vietnam.
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-[#4B4B4B] mb-6 pr-30 md:pr-0"
               variants={paragraphVariants}
             >
@@ -229,7 +243,7 @@ export default function CottonHero() {
               focuses on consistent quality control and providing logistics
               services, helping customers access supply and save time.
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-[#4B4B4B] mb-6"
               variants={paragraphVariants}
             >
@@ -239,13 +253,13 @@ export default function CottonHero() {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex justify-center items-center md:h-[300px]"
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               scale: 1,
-              transition: { delay: 0.4, duration: 0.8 }
+              transition: { delay: 0.4, duration: 0.8 },
             }}
           />
         </div>

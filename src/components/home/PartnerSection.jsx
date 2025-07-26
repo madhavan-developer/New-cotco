@@ -38,8 +38,8 @@ export default function PartnerSection() {
 
   return (
     <section className="py-12 px-4 md:px-20 bg-white rounded-md partner-section">
-      <h2 className="text-center text-xl md:text-2xl font-semibold mb-8">
-        Proud partners with global leaders
+      <h2 className="text-center text-xl md:text-2xl font-bold mb-8">
+        PROUD PARTNERS OF GLOBAL LEADERS
       </h2>
 
       <Slider {...settings}>

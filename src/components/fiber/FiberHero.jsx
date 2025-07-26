@@ -15,7 +15,7 @@ export default function FiberHero() {
     const checkIfMobile = () => setIsMobile(window.innerWidth < 768);
     checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
-    
+
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setScrolled(true);
@@ -24,7 +24,7 @@ export default function FiberHero() {
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener("resize", checkIfMobile);
       window.removeEventListener("scroll", handleScroll);
@@ -107,12 +107,27 @@ export default function FiberHero() {
       {/* Video Section with Scroll Effect */}
       <motion.div
         initial={{ scale: 1, opacity: 1 }}
-        animate={scrolled ? { scale: 0.89, opacity: 0.9 } : { scale: 1, opacity: 1 }}
+        animate={
+          scrolled ? { scale: 0.89, opacity: 0.9 } : { scale: 1, opacity: 1 }
+        }
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`relative z-10 transition-all duration-500 ease-out ${
           scrolled ? "rounded-2xl shadow-2xl" : "rounded-none"
         }`}
       >
+        <div className="absolute z-10 bottom-[190px] left-15">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-9xl text-white font-bold cotton-section-heading"
+          >
+            FIBER
+          </motion.h1>
+          <p className="text-white text-xl pl-6.5 pt-3 cotton-section-subheading">
+            Empowering Vietnam’s Textile Industry Since 2016
+          </p>
+        </div>
         {/* Top Hero Video */}
         <motion.div
           className="w-full flex justify-center"
@@ -120,15 +135,6 @@ export default function FiberHero() {
           animate="visible"
           variants={heroVariants}
         >
-          <motion.h1
-            className="absolute z-11 bottom-10 left-8 text-center text-xl md:text-4xl font-semibold text-[#fff] mb-4 md:mb-6"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            High-Quality Fiber Solutions for the Spinning Industry
-          </motion.h1>
-          
           {/* Desktop Video */}
           <motion.video
             autoPlay
@@ -136,7 +142,9 @@ export default function FiberHero() {
             loop
             playsInline
             src="/video/fiber.mp4"
-            className={`w-full rounded-xl  hidden md:block  ${scrolled ? "rounded-3xl " : "rounded-none"}`}
+            className={`w-full rounded-xl  hidden md:block  ${
+              scrolled ? "rounded-3xl " : "rounded-none"
+            }`}
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.3 }}
           />
@@ -149,7 +157,9 @@ export default function FiberHero() {
               loop
               playsInline
               src="/video/fiber-mobile.mp4"
-              className={`absolute top-0 left-0 w-screen h-screen object-cover  ${scrolled ? "rounded-xl " : "rounded-none"}`}
+              className={`absolute top-0 left-0 w-screen h-screen object-cover  ${
+                scrolled ? "rounded-xl " : "rounded-none"
+              }`}
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             />
@@ -157,7 +167,12 @@ export default function FiberHero() {
 
           {/* Animated Bubble (shared for both) */}
           <motion.div
-            initial={{ position: "absolute", right: "-200px", top: "70%", rotate: bubbleRotation }}
+            initial={{
+              position: "absolute",
+              right: "-200px",
+              top: "70%",
+              rotate: bubbleRotation,
+            }}
             animate={controls}
             style={{ rotate: bubbleRotation, position: "absolute" }}
             whileHover={{ scale: 1.05 }}
@@ -183,7 +198,7 @@ export default function FiberHero() {
           animate="visible"
           variants={titleVariants}
         >
-          fiber
+          FIBER
         </motion.h1>
 
         <div

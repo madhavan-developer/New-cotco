@@ -9,7 +9,7 @@ export default function VissionMission() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <SlideIn direction="left">
             <div>
-              <h2 className="text-3xl font-bold mb-4">Vision</h2>
+              <h2 className="text-3xl font-bold mb-4">VISION</h2>
               <p className="text-base text-gray-700 leading-relaxed">
                 To be Vietnam’s leading, most trusted <br />
                 partner in cotton, fiber, and textile machinery <br />
@@ -30,7 +30,7 @@ export default function VissionMission() {
         </div>
 
         {/* Mission Block */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <SlideIn direction="left">
             <div>
               <img
@@ -41,8 +41,8 @@ export default function VissionMission() {
             </div>
           </SlideIn>
           <SlideIn direction="right">
-            <div className="text-end"> 
-              <h2 className="text-3xl font-bold mb-4">Mission</h2>
+            <div className=""> 
+              <h2 className="text-3xl font-bold mb-4">MISSION</h2>
               <p className="text-base text-gray-700 leading-relaxed">
                 Build sustainable, transparent partnerships with global<br />
                 suppliers and customers; deliver premium materials<br />

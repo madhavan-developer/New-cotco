@@ -38,8 +38,8 @@ export default function Partner() {
 
   return (
     <section className="pb-20 px-4 md:px-20 bg-white rounded-md partner-section">
-      <h2 className="text-center text-xl md:text-2xl font-medium mb-8">
-        Proud partners with global leaders
+      <h2 className="text-center text-xl md:text-2xl font-semibold mb-8">
+        PROUD PARTNERS WITH GLOBAL LEADERS
       </h2>
 
       <Slider {...settings}>

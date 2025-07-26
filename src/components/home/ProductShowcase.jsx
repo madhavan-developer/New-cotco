@@ -3,20 +3,20 @@ import SlideIn from "../common/SlideIn";
 
 const categories = [
   {
-    title: "Cotton",
+    title: "COTTON",
     description: "Global cotton sourcing to power your production",
     image: "/img/home/cotton.png",
     link: "#",
   },
   {
-    title: "Fiber",
+    title: "FIBER",
     description: "Eco-friendly fibers for fashion and nonwoven innovation",
     image: "/img/home/cotton1.png",
     link: "#",
     overlayImage: "/img/home/overlay.png",
   },
   {
-    title: "Machines",
+    title: "MACHINES",
     description: "Advanced machinery to elevate your textile operations",
     image: "/img/home/cottonmac.png",
     link: "#",
@@ -75,9 +75,9 @@ export default function ProductShowcase() {
 
                 {/* Text Bottom Left */}
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <h3 className="text-4xl font-medium">{item.title}</h3>
                   <p
-                    className="text-sm mt-1 max-w-sm md:opacity-0 md:translate-y-4 md:max-h-0 group-hover:md:opacity-100 group-hover:md:translate-y-0 group-hover:md:max-h-[100px] transition-all duration-300 ease-in-out"
+                    className="text-md font-medium mt-1 max-w-sm md:opacity-0 md:translate-y-4 md:max-h-0 group-hover:md:opacity-100 group-hover:md:translate-y-0 group-hover:md:max-h-[100px] transition-all duration-300 ease-in-out"
                   >
                     {item.description}
                   </p>

@@ -28,20 +28,55 @@
   height: 0;
 }
 
+@media (min-width: 601px) and (max-width: 768px) {
+  .cotton-flower-image {
+    margin-top: -336px !important;
+    width: 88% !important;
+  }
+
+  .certificate-slider-img {
+    height: 300px !important;
+  }
+
+  .cotton-flower-image1 {
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 11px !important;
+  }
+
+  .certification-slider-controls {
+    margin-top: -30px !important;
+    margin-bottom: 40px;
+  }
+
+  .corevalues-section {
+    grid-auto-rows: 220px !important;
+  }
+
+  .core-values-box {
+    padding: 25px !important;
+  }
+}
+
 @media (max-width: 600px) {
   .core-strength {
     padding: 40px 10px !important;
   }
 
-  .cotton-flower-image {
-    margin-top: -70px !important;
-    width: 100% !important;
-    height: 255px !important;
-    object-fit: cover !important;
+  .cotton-section-heading{
+    font-size: 60px !important;
   }
 
   .newsLetter {
     padding: 40px 10px !important;
+  }
+
+  .certificate-slider-img {
+    height: 350px !important;
+  }
+
+  .cotton-section-subheading{
+    padding-left: 0px !important;
   }
 
   .suppliers-content {
@@ -64,7 +99,7 @@
   }
 
   .certification-slider-controls {
-    margin-top: 450px !important;
+    margin-top: 380px !important;
   }
 
   .newsLetterMainH2 {
@@ -75,7 +110,7 @@
     gap: 120px !important;
   }
 
-  .products-description{
+  .products-description {
     padding-right: 0px !important;
   }
 
@@ -105,6 +140,11 @@
   .partner-section {
     padding: 40px 20px !important;
   }
+  .cotton-flower-image1 {
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 11px !important;
+  }
 
   .product-showcase-heading {
     max-width: 100% !important;
@@ -127,10 +167,20 @@
     border-radius: 0 !important;
     box-shadow: none !important;
   }
+
+  .cotton-flower-image {
+    margin-top: -290px !important;
+    width: 88% !important;
+  }
+
+  .core-values-box {
+    padding: 15px !important;
+  }
 }
 
-@media (min-width: 1024px) and (max-width: 1440px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .cotton-flower-image {
-    margin-top: -180px !important;
+    margin-top: -398px !important;
+    width: 83% !important;
   }
 }

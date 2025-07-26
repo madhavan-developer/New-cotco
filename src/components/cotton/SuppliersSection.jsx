@@ -72,7 +72,7 @@ const suppliers = [
   {
     name: "CAM NEGOCE",
     logo: "/img/cotton/suppliers/cam_logo.png",
-    background: "/img/cotton/suppliers/cam-bg.png",
+    background: "/img/cotton/suppliers/cam-bg1.png",
     content: [
       "Headquarters: France",
       "A reputable cotton trading company in Europe",
@@ -148,7 +148,7 @@ export default function SuppliersSection() {
             className="max-w-2xl mt-28 md:mt-0 suppliers-content"
           >
             <h2 className="text-3xl font-semibold mb-12 text-white">
-              Suppliers
+              SUPPLIERS
             </h2>
 
             <div className="bg-white text-black rounded-full inline-block px-5 py-2 mb-4 font-medium shadow-lg">

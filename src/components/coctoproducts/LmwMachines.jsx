@@ -32,27 +32,31 @@ const machines = [
 export default function LmwMachines() {
   return (
     <section className="bg-white py-16 px-4 md:px-20">
-      <h2 className="text-center text-2xl md:text-3xl font-semibold mb-12">
-        Main Machines from LMW
+      <h2 className="text-center text-2xl md:text-3xl font-bold mb-12">
+        MAIN MACHINE FROM LMW
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-15">
         {machines.map((machine, index) => (
-            <SlideIn direction="right">
-              <div key={index} className="rounded-xl bg-white">
-                <img
-                  src={machine.image}
-                  alt={machine.name}
-                  className="w-full h-80 mb-4 rounded-xl object-cover"
-            />
-            <div className="bg-[#0D3B66] text-white rounded-xl p-4 flex justify-between items-center">
-              <span className="font-semibold">{machine.name.toUpperCase()}</span>
-              <button className="w-10 h-10 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-[#0D3B66] hover:rotate-[-30deg] transition-colors">
-                <FiArrowRight />
-              </button>
-            </div>
-          </div>
-          </SlideIn>
+            <SlideIn direction="up" key={index}>
+  <div className="rounded-xl bg-white overflow-hidden shadow-md">
+    <img
+      src={machine.image}
+      alt={machine.name}
+      className="w-full h-80 object-cover"
+    />
+    <div className="bg-[#0D3B66] text-white p-4 flex justify-between items-center">
+      <span className="font-semibold uppercase">{machine.name}</span>
+      <button
+        className="w-10 h-10 rounded-full border border-white flex items-center justify-center 
+                   hover:bg-white hover:text-[#0D3B66] hover:rotate-[-30deg] transition-all duration-300"
+      >
+        <FiArrowRight />
+      </button>
+    </div>
+  </div>
+</SlideIn>
+
         ))}
       </div>
     </section>

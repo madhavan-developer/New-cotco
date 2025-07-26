@@ -50,12 +50,12 @@ export default function CertificationSliderSection() {
   }, [inView]);
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 md:px-20 sm:py-2 bg-white overflow-x-hidden">
+    <section ref={sectionRef} className="py-20 px-6 md:px-20 bg-white overflow-x-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
         {/* Left Side */}
         <div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-snug text-black">
-            Proud member of the <br />
+            PROUD member of the <br />
             International Cotton Association (ICA)
           </h2>
           <button className="mt-4 px-6 py-3 bg-[#0A1C2E] text-white font-semibold rounded-md inline-flex items-center gap-2 hover:bg-[#0b263f] transition">
@@ -72,7 +72,7 @@ export default function CertificationSliderSection() {
           className="relative w-full flex flex-col items-center justify-center"
         >
           {/* Certificate Stack */}
-          <div className="relative w-full h-full md:h-80">
+          <div className="relative w-full h-full md:h-100">
             {certificateImages.map((src, i) => {
               const isActive = i === current;
 
@@ -81,7 +81,7 @@ export default function CertificationSliderSection() {
                   key={i}
                   src={src}
                   alt={`Certificate ${i + 1}`}
-                  className={`absolute top-0 left-0 w-full h-100 rounded-2xl transition-all duration-700 ease-in-out
+                  className={`absolute certificate-slider-img top-0 left-0 w-[600px] h-[450px] rounded-2xl transition-all duration-700 ease-in-out
                     ${isActive ? "z-30 scale-100 rotate-0 opacity-100" : "z-10 opacity-40 scale-[0.95]"}
                   `}
                   style={{
