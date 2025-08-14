@@ -8,6 +8,7 @@ import PartnerSection from "../components/home/PartnerSection";
 import CoreStrengthSection from "../components/home/CoreStrengthSection";
 import ContactToday from "../components/home/ContactToday";
 import NewsEventsSection from "../components/home/NewsLetter";
+import WhoWeAreSection from "../components/home/WhoWeAreSection";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
+        <WhoWeAreSection/>
         <ProductShowcase />
         <VisionMissionSection />
         <PartnerSection />
