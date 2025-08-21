@@ -184,3 +184,38 @@
     width: 83% !important;
   }
 }
+
+.pro-icon{
+  width: 90px;
+  border: 10px solid #fff;
+  border-radius: 0 0 50% 0;
+    background: #fff;
+}
+
+.pro-img{
+  position: relative;
+}
+.pro-img::before{
+  content: "";
+  width: 80px;
+  height: 30px;
+  position: absolute;
+  left: 70px;
+  top: -10px;
+  z-index: 1;
+  border-radius: 30px 0 0 0;
+  border-left: 10px solid #fff;
+  border-top: 10px solid #fff;
+}
+.pro-img::after{
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: -10px;
+  top: 70px;
+  z-index: 1;
+  border-radius: 30px 0 0 0;
+  border-left: 10px solid #fff;
+  border-top: 10px solid #fff;
+}

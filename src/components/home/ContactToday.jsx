@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactToday = () => {
   return (
-    <section className="relative h-[300px] md:h-[400px] overflow-hidden">
+    <section className="relative h-[300px] md:h-[400px] overflow-hidden mt-22">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/img/home/upperFooter.jpg')", backgroundAttachment: "fixed"}}
